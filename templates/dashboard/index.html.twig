@@ -1,0 +1,21 @@
+{% extends("partials/menustandard/menu.html.twig") %}
+
+{% block title %}Hello DashboardController!{% endblock %}
+
+{% block stylesheets %}
+        <link href="{{ asset('assets/css/layout/pages/dashboard.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block contenu %}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="hovereffect card " style="width: 20rem;">
+                        <img class="card-img-top" src="https://img.youtube.com/vi/jFPYDneq29g/maxresdefault.jpg" alt="">
+                        <div class="overlay">
+                                <h2>Hover effect 1</h2>
+                                <p class="p-card">Description du média</p>
+                                <p class="p-card">et son genre</p>
+                                <a class="info" href="#">plus d'info</a>
+                        </div>
+                </div>
+        </div>
+
+{% endblock %}
