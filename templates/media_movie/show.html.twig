@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MediaMovie{% endblock %}
+
+{% block body %}
+    <h1>MediaMovie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ media_movie.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ media_movie.title }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ media_movie.status }}</td>
+            </tr>
+            <tr>
+                <th>Release_date</th>
+                <td>{{ media_movie.releaseDate ? media_movie.releaseDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Summary</th>
+                <td>{{ media_movie.summary }}</td>
+            </tr>
+            <tr>
+                <th>Trailer_url</th>
+                <td>{{ media_movie.trailerUrl }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('media_movie_index') }}">back to list</a>
+
+    <a href="{{ path('media_movie_edit', {'id': media_movie.id}) }}">edit</a>
+
+    {{ include('media_movie/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MediaSeries{% endblock %}
+
+{% block body %}
+    <h1>MediaSeries</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ media_series.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ media_series.title }}</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td>{{ media_series.number }}</td>
+            </tr>
+            <tr>
+                <th>Media_url</th>
+                <td>{{ media_series.mediaUrl }}</td>
+            </tr>
+            <tr>
+                <th>Release_date</th>
+                <td>{{ media_series.releaseDate ? media_series.releaseDate|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('media_series_index') }}">back to list</a>
+
+    <a href="{{ path('media_series_edit', {'id': media_series.id}) }}">edit</a>
+
+    {{ include('media_series/_delete_form.html.twig') }}
+{% endblock %}

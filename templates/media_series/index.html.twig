@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MediaSeries index{% endblock %}
+
+{% block body %}
+    <h1>MediaSeries index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Number</th>
+                <th>Media_url</th>
+                <th>Release_date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for media_series in media_series %}
+            <tr>
+                <td>{{ media_series.id }}</td>
+                <td>{{ media_series.title }}</td>
+                <td>{{ media_series.number }}</td>
+                <td>{{ media_series.mediaUrl }}</td>
+                <td>{{ media_series.releaseDate ? media_series.releaseDate|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('media_series_show', {'id': media_series.id}) }}">show</a>
+                    <a href="{{ path('media_series_edit', {'id': media_series.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('media_series_new') }}">Create new</a>
+{% endblock %}

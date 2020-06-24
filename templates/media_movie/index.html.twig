@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MediaMovie index{% endblock %}
+
+{% block body %}
+    <h1>MediaMovie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Release_date</th>
+                <th>Summary</th>
+                <th>Trailer_url</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for media_movie in media_movies %}
+            <tr>
+                <td>{{ media_movie.id }}</td>
+                <td>{{ media_movie.title }}</td>
+                <td>{{ media_movie.status }}</td>
+                <td>{{ media_movie.releaseDate ? media_movie.releaseDate|date('Y-m-d') : '' }}</td>
+                <td>{{ media_movie.summary }}</td>
+                <td>{{ media_movie.trailerUrl }}</td>
+                <td>
+                    <a href="{{ path('media_movie_show', {'id': media_movie.id}) }}">show</a>
+                    <a href="{{ path('media_movie_edit', {'id': media_movie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('media_movie_new') }}">Create new</a>
+{% endblock %}

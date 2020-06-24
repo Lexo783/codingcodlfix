@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MediaSeries{% endblock %}
+
+{% block body %}
+    <h1>Create new MediaSeries</h1>
+
+    {{ include('media_series/_form.html.twig') }}
+
+    <a href="{{ path('media_series_index') }}">back to list</a>
+{% endblock %}
