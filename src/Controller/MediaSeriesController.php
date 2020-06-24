@@ -61,6 +61,13 @@ class MediaSeriesController extends AbstractController
         ]);
     }
 
+    public function informationShow(MediaSeries $mediaMovie): Response
+    {
+        return $this->render('partials/information_media/information_media.html.twig', [
+            'media' => $mediaMovie,
+        ]);
+    }
+
     /**
      * @Route("/{id}/edit", name="media_series_edit", methods={"GET","POST"})
      */

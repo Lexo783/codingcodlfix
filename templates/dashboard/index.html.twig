@@ -18,7 +18,7 @@
                         </div>
                 </div>
                 <div class="row justify-content-md-center">
-                        {% for movie in mediaMovie %}
+                        {% for movie in allmedia %}
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  margin-card-dash" >
                                         <div class="hovereffect" style="width: 20rem;">
                                                 <img class="card-img-top" src="https://img.youtube.com/vi/{{ movie.idMovie }}/maxresdefault.jpg" alt="">
@@ -32,21 +32,7 @@
                                         </div>
                                 </div>
                         {% endfor %}
-                        {% for series in mediaSeries %}
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 margin-card-dash">
-                                        <div class="hovereffect " style="width: 20rem;">
-                                                <img class="card-img-top" src="https://img.youtube.com/vi/{{ series.idSeries }}/maxresdefault.jpg" alt="">
-                                                <div class="overlay">
-                                                        <h2>{{ series.title }}</h2>
-                                                        <p class="p-card">Description du média</p>
-                                                        <div class="col">
-                                                                <a class="info" href="#">plus d'info</a>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                </div>
-                        {% endfor %}
-
                 </div>
+                {{ knp_pagination_render(allmedia) }}
         </div>
 {% endblock %}

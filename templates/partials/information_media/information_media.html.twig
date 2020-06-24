@@ -21,9 +21,9 @@
                             <span>{{ media_movie.releaseDate ? media_movie.releaseDate|date('Y-m-d') : '' }}</span>
                         </div>
                         <div class="col">
-                            <span class="span-1">Genre</span><br>
+                            <span class="span-1">Genre :</span><br>
                             {% for genre in media_movie.genre %}
-                            <span> {{ genre.genreName }}</span>
+                                <span> {{ genre.genreName }}</span>
                             {% endfor %}
                         </div>
                     </div>

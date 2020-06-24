@@ -56,7 +56,7 @@ class MediaMovieController extends AbstractController
      */
     public function show(MediaMovie $mediaMovie): Response
     {
-        return $this->render('media_movie/information_movie.html.twig', [
+        return $this->render('media_movie/show.html.twig', [
             'media_movie' => $mediaMovie,
         ]);
     }
@@ -66,7 +66,7 @@ class MediaMovieController extends AbstractController
      */
     public function informationShow(MediaMovie $mediaMovie): Response
     {
-        return $this->render('media_movie/show.html.twig', [
+        return $this->render('partials/information_media/show.html.twig', [
             'media' => $mediaMovie,
         ]);
     }
