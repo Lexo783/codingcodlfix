@@ -90,3 +90,13 @@
     color: white;
     margin-top: 7px;
 }
+
+.margin-card-dash{
+    margin: 20px;
+    max-width: none;
+}
+
+.active-pink-2 input.form-control[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
+}

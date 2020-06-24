@@ -43,6 +43,16 @@ class MediaSeries
      */
     private $release_date;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $shortSummary;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $idSeries;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +114,30 @@ class MediaSeries
     public function setReleaseDate(\DateTimeInterface $release_date): self
     {
         $this->release_date = $release_date;
+
+        return $this;
+    }
+
+    public function getShortSummary(): ?string
+    {
+        return $this->shortSummary;
+    }
+
+    public function setShortSummary(string $shortSummary): self
+    {
+        $this->shortSummary = $shortSummary;
+
+        return $this;
+    }
+
+    public function getIdSeries(): ?string
+    {
+        return $this->idSeries;
+    }
+
+    public function setIdSeries(string $idSeries): self
+    {
+        $this->idSeries = $idSeries;
 
         return $this;
     }

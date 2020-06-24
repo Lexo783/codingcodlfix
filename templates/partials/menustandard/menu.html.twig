@@ -6,6 +6,7 @@
         <div class="sidebar-menu">
             <ul>
                 <li class="active"><a href="#">Médias</a></li>
+                <li><a href="{{ path('historic') }}">Mon historique</a></li>
                 <li><a href="{{ path('contact') }}">Nous contacter</a></li>
                 <li><a href="{{ path('app_logout') }}">Me déconnecter</a></li>
             </ul>
@@ -23,9 +24,9 @@
                 </button>
             </div>
         </div>
-        <div class="content p-4">
-            {% block contenu %}{% endblock %}
-        </div>
+        {% block contenu %}
+
+        {% endblock %}
         <footer>Copyright Cod'Flix</footer>
     </div>
 </div>

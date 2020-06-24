@@ -28,6 +28,7 @@ class MediaMovieType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
+            ->add('shortSummary')
         ;
     }
 

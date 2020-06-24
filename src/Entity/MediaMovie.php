@@ -49,6 +49,16 @@ class MediaMovie
      */
     private $genre;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $shortSummary;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $idMovie;
+
     public function __construct()
     {
         $this->genre = new ArrayCollection();
@@ -141,6 +151,30 @@ class MediaMovie
         if ($this->genre->contains($genre)) {
             $this->genre->removeElement($genre);
         }
+
+        return $this;
+    }
+
+    public function getShortSummary(): ?string
+    {
+        return $this->shortSummary;
+    }
+
+    public function setShortSummary(string $shortSummary): self
+    {
+        $this->shortSummary = $shortSummary;
+
+        return $this;
+    }
+
+    public function getIdMovie(): ?string
+    {
+        return $this->idMovie;
+    }
+
+    public function setIdMovie(string $idMovie): self
+    {
+        $this->idMovie = $idMovie;
 
         return $this;
     }

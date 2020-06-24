@@ -6,16 +6,47 @@
         <link href="{{ asset('assets/css/layout/pages/dashboard.css') }}" rel="stylesheet" />
 {% endblock %}
 {% block contenu %}
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="hovereffect card " style="width: 20rem;">
-                        <img class="card-img-top" src="https://img.youtube.com/vi/jFPYDneq29g/maxresdefault.jpg" alt="">
-                        <div class="overlay">
-                                <h2>Titre</h2>
-                                <p class="p-card">Description du média</p>
-                                <div class="col">
-                                        <a class="info" href="#">plus d'info</a>
-                                </div>
+        <div class="content p-4">
+                <div class="row">
+                        <div class="col-md-4 offset-md-8">
+                                {{ form_start(form) }}
+                                        <div class="form-group has-btn">
+                                                {{ form_row(form.title) }}
+                                                <button type="submit" class="btn btn-block bg-red">Valider</button>
+                                        </div>
+                                {{ form_end(form) }}
                         </div>
+                </div>
+                <div class="row justify-content-md-center">
+                        {% for movie in mediaMovie %}
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  margin-card-dash" >
+                                        <div class="hovereffect" style="width: 20rem;">
+                                                <img class="card-img-top" src="https://img.youtube.com/vi/{{ movie.idMovie }}/maxresdefault.jpg" alt="">
+                                                <div class="overlay">
+                                                        <h2>{{ movie.title }}</h2>
+                                                        <p class="p-card">{{ movie.shortSummary }}</p>
+                                                        <div class="col">
+                                                                <a class="info" href="{{ path('media_movie_information', {'id': movie.id}) }}">plus d'info</a>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        {% endfor %}
+                        {% for series in mediaSeries %}
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 margin-card-dash">
+                                        <div class="hovereffect " style="width: 20rem;">
+                                                <img class="card-img-top" src="https://img.youtube.com/vi/{{ series.idSeries }}/maxresdefault.jpg" alt="">
+                                                <div class="overlay">
+                                                        <h2>{{ series.title }}</h2>
+                                                        <p class="p-card">Description du média</p>
+                                                        <div class="col">
+                                                                <a class="info" href="#">plus d'info</a>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        {% endfor %}
+
                 </div>
         </div>
 {% endblock %}

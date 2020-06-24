@@ -36,6 +36,9 @@ class MediaMovieController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $data = $form->get('trailer_url')->getData();
+            $dataParse = explode("/", $data);
+            $mediaMovie->setIdMovie(end($dataParse));
             $entityManager->persist($mediaMovie);
             $entityManager->flush();
 
@@ -53,8 +56,18 @@ class MediaMovieController extends AbstractController
      */
     public function show(MediaMovie $mediaMovie): Response
     {
-        return $this->render('media_movie/show.html.twig', [
+        return $this->render('media_movie/information_movie.html.twig', [
             'media_movie' => $mediaMovie,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="media_movie_information", methods={"GET"})
+     */
+    public function informationShow(MediaMovie $mediaMovie): Response
+    {
+        return $this->render('media_movie/show.html.twig', [
+            'media' => $mediaMovie,
         ]);
     }
 

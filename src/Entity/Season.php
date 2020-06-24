@@ -40,6 +40,11 @@ class Season
      */
     private $mediaSeries;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $title;
+
     public function __construct()
     {
         $this->mediaSeries = new ArrayCollection();
@@ -113,6 +118,18 @@ class Season
                 $mediaSeries->setSeason(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }

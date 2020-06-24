@@ -36,6 +36,9 @@ class MediaSeriesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $data = $form->get('media_url')->getData();
+            $dataParse = explode("/", $data);
+            $mediaSeries->setIdMovie(end($dataParse));
             $entityManager->persist($mediaSeries);
             $entityManager->flush();
 
