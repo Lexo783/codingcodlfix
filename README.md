@@ -1,3 +1,22 @@
+inscription au site :
+
+recevoir le mail via maildev
+si cela ne marche pas
+taper ceci en lancant maildev maildev --hide-extensions STARTTLS
+
+Utilisateur admin :
+email : coding@gmail.com
+mdp : 123456
+
+en admin les liens pour ajouter des films séries saison épisode de séries
+http://localhost:8888/codingcertifcode/public/media/movie/
+http://localhost:8888/codingcertifcode/public/media/series/
+http://localhost:8888/codingcertifcode/public/season/
+http://localhost:8888/codingcertifcode/public/media/series/
+
+utilisateur user :
+
+
 Utilisation de symfony :
 
 installation :

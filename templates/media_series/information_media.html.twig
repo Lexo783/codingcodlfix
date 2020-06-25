@@ -11,6 +11,10 @@
             <div class="row">
                 <div class="col video">
                     <iframe width="560" height="315" src="{{ media_series.mediaUrl }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div id="duration">
+                        <span>Temps de visionnage :</span><br>
+                        <span>{{ media_series.watchDuration }}</span>
+                    </div>
                 </div>
                 <div class="col text-center">
                     <h2>{{ media_series.title }}</h2>

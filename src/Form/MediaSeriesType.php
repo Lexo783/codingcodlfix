@@ -7,6 +7,7 @@ use App\Entity\MediaSeries;
 use App\Entity\Season;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -36,6 +37,13 @@ class MediaSeriesType extends AbstractType
                 'multiple' => true,
                 'attr' => [
                     'class' => 'form-control'
+                ]
+            ])
+            ->add('watch_duration',TextareaType::class,[
+                'label' =>'temps de durée',
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'hh:mm:ss'
                 ]
             ])
         ;
