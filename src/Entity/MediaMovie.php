@@ -59,9 +59,20 @@ class MediaMovie
      */
     private $idMovie;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Historic::class, mappedBy="mediaMovie")
+     */
+    private $historics;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $watch_duration;
+
     public function __construct()
     {
         $this->genre = new ArrayCollection();
+        $this->historics = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -175,6 +186,46 @@ class MediaMovie
     public function setIdMovie(string $idMovie): self
     {
         $this->idMovie = $idMovie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Historic[]
+     */
+    public function getHistorics(): Collection
+    {
+        return $this->historics;
+    }
+
+    public function addHistoric(Historic $historic): self
+    {
+        if (!$this->historics->contains($historic)) {
+            $this->historics[] = $historic;
+            $historic->addMediaMovie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHistoric(Historic $historic): self
+    {
+        if ($this->historics->contains($historic)) {
+            $this->historics->removeElement($historic);
+            $historic->removeMediaMovie($this);
+        }
+
+        return $this;
+    }
+
+    public function getWatchDuration(): ?string
+    {
+        return $this->watch_duration;
+    }
+
+    public function setWatchDuration(string $watch_duration): self
+    {
+        $this->watch_duration = $watch_duration;
 
         return $this;
     }

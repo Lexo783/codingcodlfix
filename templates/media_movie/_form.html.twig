@@ -1,4 +1,20 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
+<div class="content p-4">
+    {{ form_start(form) }}
+    <div>{{ form_row((form.title)) }}</div>
+    <div class="row">
+        <div class="col">{{ form_row((form.summary)) }}</div>
+        <div class="col">{{ form_row((form.shortSummary)) }}</div>
+    </div>
+    <div class="row">
+        <div class="col">{{ form_row((form.trailer_url)) }}</div>
+        <div class="col">{{ form_row((form.watch_duration)) }}</div>
+    </div>
+    <div class="row">
+        <div class="col">{{ form_row((form.status)) }}</div>
+        <div class="col">{{ form_row((form.release_date)) }}</div>
+        <div class="col">{{ form_row((form.genre)) }}</div>
+    </div>
+
     <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+    {{ form_end(form) }}
+</div>

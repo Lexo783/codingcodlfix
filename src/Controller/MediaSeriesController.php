@@ -9,9 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/media/series")
+ * @IsGranted("ROLE_USER")
  */
 class MediaSeriesController extends AbstractController
 {
@@ -56,15 +58,8 @@ class MediaSeriesController extends AbstractController
      */
     public function show(MediaSeries $mediaSeries): Response
     {
-        return $this->render('media_series/show.html.twig', [
+        return $this->render('media_series/information_media.html.twig', [
             'media_series' => $mediaSeries,
-        ]);
-    }
-
-    public function informationShow(MediaSeries $mediaMovie): Response
-    {
-        return $this->render('partials/information_media/information_media.html.twig', [
-            'media' => $mediaMovie,
         ]);
     }
 

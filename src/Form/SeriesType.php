@@ -15,9 +15,11 @@ class SeriesType extends AbstractType
     {
         $builder
             ->add('title')
+            ->add('short_summary')
             ->add('summary')
             ->add('status')
             ->add('release_date')
+            ->add('idimg')
             ->add('genre',EntityType::class,[
                 'label' => 'genre',
                 'class' => Genre::class,

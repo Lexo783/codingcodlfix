@@ -1,0 +1,35 @@
+{% extends("partials/menustandard/menu.html.twig") %}
+
+{% block title %}{{ media_movie.title }}{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('assets/css/layout/pages/informationMedia.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block contenu %}
+    <div class="background-information">
+        <div class="content p-4">
+            <div class="row">
+                <div class="col video">
+                    <iframe id="myPlayer" width="560" height="315" src="{{ media_movie.trailerUrl }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div id="duration"></div>
+                </div>
+                <div class="col text-center">
+                    <h2>{{ media_movie.title }}</h2>
+                    <p>{{ media_movie.summary }}</p>
+                    <div class="row">
+                        <div class="col">
+                            <span class="span-1">Date de diffusion :</span><br>
+                            <span>{{ media_movie.releaseDate ? media_movie.releaseDate|date('Y-m-d') : '' }}</span>
+                        </div>
+                        <div class="col">
+                            <span class="span-1">Genre :</span><br>
+                            {% for genre in media_movie.genre %}
+                                <span> {{ genre.genreName }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

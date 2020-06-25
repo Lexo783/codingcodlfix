@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Genre;
 use App\Entity\MediaSeries;
 use App\Entity\Season;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -28,6 +29,15 @@ class MediaSeriesType extends AbstractType
                 ]
             ])
             ->add('shortSummary')
+            ->add('genre',EntityType::class,[
+                'label' => 'genre',
+                'class' => Genre::class,
+                'choice_label' => 'Genre_name',
+                'multiple' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
         ;
     }
 

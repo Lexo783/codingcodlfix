@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\MediaMovie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,22 +20,21 @@ class MediaMovieRepository extends ServiceEntityRepository
         parent::__construct($registry, MediaMovie::class);
     }
 
-    // /**
-    //  * @return MediaMovie[] Returns an array of MediaMovie objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+    * @return MediaMovie[] Returns an array of MediaMovie objects
+    */
+
+    public function findBySearch($search)
     {
+
         return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('m.title LIKE :search')
+            ->setParameter('search','%'.$search.'%')
+            ->orderBy('m.release_date', 'DESC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?MediaMovie

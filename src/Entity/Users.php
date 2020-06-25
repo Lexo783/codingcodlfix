@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UsersRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -40,6 +42,16 @@ class Users implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Historic::class, mappedBy="user")
+     */
+    private $historics;
+
+    public function __construct()
+    {
+        $this->historics = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -127,6 +139,34 @@ class Users implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Historic[]
+     */
+    public function getHistorics(): Collection
+    {
+        return $this->historics;
+    }
+
+    public function addHistoric(Historic $historic): self
+    {
+        if (!$this->historics->contains($historic)) {
+            $this->historics[] = $historic;
+            $historic->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHistoric(Historic $historic): self
+    {
+        if ($this->historics->contains($historic)) {
+            $this->historics->removeElement($historic);
+            $historic->removeUser($this);
+        }
 
         return $this;
     }

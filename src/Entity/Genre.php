@@ -34,10 +34,16 @@ class Genre
      */
     private $series;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=MediaSeries::class, mappedBy="genre")
+     */
+    private $mediaSeries;
+
     public function __construct()
     {
         $this->mediaMovies = new ArrayCollection();
         $this->series = new ArrayCollection();
+        $this->mediaSeries = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -108,6 +114,34 @@ class Genre
         if ($this->series->contains($series)) {
             $this->series->removeElement($series);
             $series->removeGenre($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MediaSeries[]
+     */
+    public function getMediaSeries(): Collection
+    {
+        return $this->mediaSeries;
+    }
+
+    public function addMediaSeries(MediaSeries $mediaSeries): self
+    {
+        if (!$this->mediaSeries->contains($mediaSeries)) {
+            $this->mediaSeries[] = $mediaSeries;
+            $mediaSeries->addGenre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMediaSeries(MediaSeries $mediaSeries): self
+    {
+        if ($this->mediaSeries->contains($mediaSeries)) {
+            $this->mediaSeries->removeElement($mediaSeries);
+            $mediaSeries->removeGenre($this);
         }
 
         return $this;

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MediaSeriesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,6 +54,26 @@ class MediaSeries
      * @ORM\Column(type="string", length=255)
      */
     private $idSeries;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $watch_duration;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $summary;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Genre::class, inversedBy="mediaSeries")
+     */
+    private $genre;
+
+    public function __construct()
+    {
+        $this->genre = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -138,6 +160,56 @@ class MediaSeries
     public function setIdSeries(string $idSeries): self
     {
         $this->idSeries = $idSeries;
+
+        return $this;
+    }
+
+    public function getWatchDuration(): ?string
+    {
+        return $this->watch_duration;
+    }
+
+    public function setWatchDuration(string $watch_duration): self
+    {
+        $this->watch_duration = $watch_duration;
+
+        return $this;
+    }
+
+    public function getSummary(): ?string
+    {
+        return $this->summary;
+    }
+
+    public function setSummary(string $summary): self
+    {
+        $this->summary = $summary;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Genre[]
+     */
+    public function getGenre(): Collection
+    {
+        return $this->genre;
+    }
+
+    public function addGenre(Genre $genre): self
+    {
+        if (!$this->genre->contains($genre)) {
+            $this->genre[] = $genre;
+        }
+
+        return $this;
+    }
+
+    public function removeGenre(Genre $genre): self
+    {
+        if ($this->genre->contains($genre)) {
+            $this->genre->removeElement($genre);
+        }
 
         return $this;
     }

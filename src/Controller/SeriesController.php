@@ -9,9 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/series")
+ * @IsGranted("ROLE_USER")
  */
 class SeriesController extends AbstractController
 {
@@ -36,6 +38,9 @@ class SeriesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $data = $form->get('idimg')->getData();
+            $dataParse = explode("/", $data);
+            $series->setIdImg(end($dataParse));
             $entityManager->persist($series);
             $entityManager->flush();
 
@@ -53,7 +58,8 @@ class SeriesController extends AbstractController
      */
     public function show(Series $series): Response
     {
-        return $this->render('series/show.html.twig', [
+        //dd($series);
+        return $this->render('series/information_series.html.twig', [
             'series' => $series,
         ]);
     }

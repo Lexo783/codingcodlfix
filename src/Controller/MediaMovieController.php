@@ -9,9 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/media/movie")
+ * @IsGranted("ROLE_USER")
  */
 class MediaMovieController extends AbstractController
 {
@@ -56,18 +58,8 @@ class MediaMovieController extends AbstractController
      */
     public function show(MediaMovie $mediaMovie): Response
     {
-        return $this->render('media_movie/show.html.twig', [
+        return $this->render('media_movie/information_media.html.twig', [
             'media_movie' => $mediaMovie,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="media_movie_information", methods={"GET"})
-     */
-    public function informationShow(MediaMovie $mediaMovie): Response
-    {
-        return $this->render('partials/information_media/show.html.twig', [
-            'media' => $mediaMovie,
         ]);
     }
 

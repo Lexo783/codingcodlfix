@@ -1,0 +1,34 @@
+v{% extends 'base.html.twig' %}
+
+{% block title %}Historic{% endblock %}
+
+{% block body %}
+    <h1>Historic</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ historic.id }}</td>
+            </tr>
+            <tr>
+                <th>Start_date</th>
+                <td>{{ historic.startDate ? historic.startDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Finish_date</th>
+                <td>{{ historic.finishDate ? historic.finishDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Watch_duration</th>
+                <td>{{ historic.watchDuration }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('historic_index') }}">back to list</a>
+
+    <a href="{{ path('historic_edit', {'id': historic.id}) }}">edit</a>
+
+    {{ include('historic/_delete_form.html.twig') }}
+{% endblock %}

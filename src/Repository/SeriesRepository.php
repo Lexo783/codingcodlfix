@@ -19,22 +19,21 @@ class SeriesRepository extends ServiceEntityRepository
         parent::__construct($registry, Series::class);
     }
 
-    // /**
-    //  * @return Series[] Returns an array of Series objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+    * @return Series[] Returns an array of Series objects
+    */
+
+    public function findBySearch($search)
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
+
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.title LIKE :search')
+            ->setParameter('search','%'.$search.'%')
+            ->orderBy('m.release_date', 'DESC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Series

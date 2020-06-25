@@ -49,6 +49,16 @@ class Series
      */
     private $seasons;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $idimg;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $shortSummary;
+
     public function __construct()
     {
         $this->genre = new ArrayCollection();
@@ -161,6 +171,30 @@ class Series
                 $season->setSeries(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIdImg(): ?string
+    {
+        return $this->idimg;
+    }
+
+    public function setIdImg(string $idimg): self
+    {
+        $this->idimg = $idimg;
+
+        return $this;
+    }
+
+    public function getShortSummary(): ?string
+    {
+        return $this->shortSummary;
+    }
+
+    public function setShortSummary(string $shortSummary): self
+    {
+        $this->shortSummary = $shortSummary;
 
         return $this;
     }
