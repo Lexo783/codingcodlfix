@@ -34,6 +34,9 @@ composer create-project symfony/website-skeleton my_project
 une fois installer symfony installer (avec installateur ou non)
 dans le terminal taper : composer require symfony/apache-pack (il permet de régler les problemes (si il y en a) lié à la tool bar de symfony qui permet de débuger)
 
+puis en cas de probleme :
+composer install
+
 connexion à la bdd :
 puis dans le fichier .env dans la ligne 32 mettre le lien de connexion à la bdd (exemple : DATABASE_URL=mysql://root:root@localhost:8888/codflix?serverVersion=5.7)
 
